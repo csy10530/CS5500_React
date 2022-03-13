@@ -1,6 +1,7 @@
 import {
   createUser,
-  deleteUsersByUsername, findAllUsers,
+  deleteUsersByUsername,
+  findAllUsers,
   findUserById
 } from "../services/users-service";
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://cs5500-node-a2-siyuan-chen.herokuapp.com/";
+const BASE_URL = "https://cs5500-node-a3-siyuan-chen.herokuapp.com";
 const LOGIN_API = `${BASE_URL}/login`;
 const USERS_API = `${BASE_URL}/users`;
 
