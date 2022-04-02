@@ -1,7 +1,18 @@
+import Tuits from "../tuits";
+import * as service from "../../services/dislikes-service";
+import {useEffect, useState} from "react";
+
 const MyDislikes = () => {
+    const [dislikedTuits, setDislikedTuits] = useState([]);
+    const findDislikedTuits = async () => {
+        const tuits = await service.findAllTuitsDislikedByUser("me");
+        setDislikedTuits(tuits);
+    }
+    useEffect(findDislikedTuits, []);
+
     return(
         <div>
-            <h1>My Dislikes</h1>
+            <Tuits tuits={dislikedTuits} refreshTuits={findDislikedTuits()}/>
         </div>
     )
 }
