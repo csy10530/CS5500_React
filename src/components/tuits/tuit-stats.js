@@ -15,17 +15,22 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
 
-    const init = async () => {
-        const user = await profile();
-        if (user) {
-            const isLiked = await likeService.findUserLikesTuit("me", tuit._id);
-            setIsLiked(isLiked.like);
-            const isDisliked = await dislikeService.findUserDislikesTuit("me", tuit._id);
-            setIsDisliked(isDisliked.dislike);
-        }
+    const initStat = async () => {
+
     }
 
-    useEffect(init, [tuit.stats]);
+    //useEffect(initStat, [tuit.stats]);
+    useEffect(() => {
+        async function initStat() {
+            const user = await profile();
+            if (user) {
+                const isLiked = await likeService.findUserLikesTuit("me", tuit._id);
+                setIsLiked(isLiked.like);
+                const isDisliked = await dislikeService.findUserDislikesTuit("me", tuit._id);
+                setIsDisliked(isDisliked.dislike);
+            }
+        }
+    }, [tuit.stats]);
 
     return (
         <div className="row mt-2">
