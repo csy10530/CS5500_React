@@ -4,7 +4,7 @@ import TuitImage from "./tuit-image";
 import TuitVideo from "./tuit-video";
 import {useNavigate, Link} from "react-router-dom";
 
-const Tuit = ({tuit, deleteTuit, likeTuit}) => {
+const Tuit = ({tuit, deleteTuit, likeTuit, dislikeTuit}) => {
     const navigate = useNavigate();
     const daysOld = (tuit) => {
         const now = new Date();
@@ -31,6 +31,7 @@ const Tuit = ({tuit, deleteTuit, likeTuit}) => {
   return(
     // <li onClick={() => navigate(`/tuit/${tuit._id}`)}
     <li className="p-2 ttr-tuit list-group-item d-flex rounded-0">
+
       <div className="pe-2">
         {
           tuit.postedBy &&
@@ -57,7 +58,7 @@ const Tuit = ({tuit, deleteTuit, likeTuit}) => {
           tuit.image &&
           <TuitImage tuit={tuit}/>
         }
-        <TuitStats tuit={tuit} likeTuit={likeTuit}/>
+        <TuitStats tuit={tuit} likeTuit={likeTuit} dislikeTuit={dislikeTuit}/>
       </div>
     </li>
   );
