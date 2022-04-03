@@ -53,7 +53,8 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
                         tuit.stats && isLiked === false &&
                         <i className="fa-solid fa-thumbs-up me-1"/>
                     }
-                    {tuit.stats &&
+                    {
+                        tuit.stats &&
                         <span className="ttr-stats-likes">{tuit.stats.likes}</span>
                     }
                 </span>
