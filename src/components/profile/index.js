@@ -85,12 +85,12 @@ const Profile = () => {
                 Media</Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile/likes"
+              <Link to="/profile/mylikes"
                     className={`nav-link ${location.pathname.indexOf('mylikes') >= 0 ? 'active':''}`}>
                 Likes</Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile/dislikes"
+              <Link to="/profile/mydislikes"
                     className={`nav-link ${location.pathname.indexOf('mydislikes') >= 0 ? 'active':''}`}>
                 Dislikes</Link>
             </li>
