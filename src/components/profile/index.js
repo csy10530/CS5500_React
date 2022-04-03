@@ -101,8 +101,8 @@ const Profile = () => {
           <Route path="/mytuits" element={<MyTuits/>}/>
           <Route path="/tuits-and-replies" element={<TuitsAndReplies/>}/>
             <Route path="/media" element={<Media/>}/>
-            <Route path="/mylikes" element={<MyLikes/>}/>
-            <Route path="/mydislikes" element={<MyDislikes/>}/>
+            <Route path="/likes" element={<MyLikes/>}/>
+            <Route path="/dislikes" element={<MyDislikes/>}/>
         </Routes>
     </div>
   );

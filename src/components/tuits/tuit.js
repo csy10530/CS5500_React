@@ -29,7 +29,6 @@ const Tuit = ({tuit, deleteTuit, likeTuit, dislikeTuit}) => {
         return old;
     }
   return(
-    // <li onClick={() => navigate(`/tuit/${tuit._id}`)}
     <li className="p-2 ttr-tuit list-group-item d-flex rounded-0">
       <div className="pe-2">
         {
