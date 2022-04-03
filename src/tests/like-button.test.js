@@ -50,7 +50,6 @@ test('stats render correctly', () => {
     const retuitsCount = root.findByProps({className: 'ttr-stats-retuits'});
     const repliesCount = root.findByProps({className: 'ttr-stats-replies'});
     const likeButton = root.findByProps({className: 'ttr-like-tuit-click'});
-    const dislikeButton = root.findByProps({className: 'ttr-dislike-tuit-click'});
 
     let likesText = likesCount.children[0];
     let dislikesText = dislikesCount.children[0];
@@ -65,9 +64,5 @@ test('stats render correctly', () => {
     act(() => {likeButton.props.onClick()});
     likesText = likesCount.children[0];
     expect(likesText).toBe('2');
-
-    act(() => {dislikeButton.props.onClick()});
-    dislikesText = dislikesCount.children[0];
-    expect(dislikesText).toBe('2');
 });
 

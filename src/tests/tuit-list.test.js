@@ -1,13 +1,19 @@
-import Tuits from "../components/tuits/index";
+import Tuits from "../components/tuits";
 import {screen, render} from "@testing-library/react";
 import {HashRouter} from "react-router-dom";
 import {findAllTuits} from "../services/tuits-service";
 import axios from "axios";
 
+const MOCKED_USERS = [
+  {username: 'user0', _id: '123'},
+  {username: 'user1', _id: "234"},
+  {username: 'user2', _id: '345'}
+];
+
 const MOCKED_TUITS = [
-  {tuit: "test0", postBy: "user0", _id: "1"},
-  {tuit: "test1", postBy: "user1", _id: "2"},
-  {tuit: "test2", postBy: "user2", _id: "3"}
+  {tuit: 'tuit0', postedBy: '123', _id: "0"},
+  {tuit: 'tuit1', postedBy: '234', _id: '1'},
+  {tuit: 'tuit2', postedBy: '345', _id: '2'}
 ];
 
 test('tuit list renders static tuit array', () => {
@@ -15,13 +21,16 @@ test('tuit list renders static tuit array', () => {
       <HashRouter>
         <Tuits tuits={MOCKED_TUITS}/>
       </HashRouter>
-  )
-  const linkElement1 = screen.getByText(/test0/i);
-  const linkElement2 = screen.getByText(/test1/i);
-  const linkElement3 = screen.getByText(/test2/i);
+  );
+
+  const linkElement0 = screen.getByText(/tuit0/i);
+  expect(linkElement0).toBeInTheDocument();
+
+  const linkElement1 = screen.getByText(/tuit1/i);
   expect(linkElement1).toBeInTheDocument();
+
+  const linkElement2 = screen.getByText(/tuit2/i);
   expect(linkElement2).toBeInTheDocument();
-  expect(linkElement3).toBeInTheDocument();
 });
 
 test('tuit list renders async', async () => {
@@ -30,18 +39,18 @@ test('tuit list renders async', async () => {
       <HashRouter>
         <Tuits tuits={tuits}/>
       </HashRouter>
-  )
-  const linkElement1 = screen.getByText(/bob's 1st tuit/i);
-  expect(linkElement1).toBeInTheDocument();
+  );
 
-  const linkElement2 = screen.getByText(/bob's 3rd tuit/i);
-  expect(linkElement2).toBeInTheDocument();
-})
+  const linkElement0 = screen.getByText(/first tuit/i);
+  expect(linkElement0).toBeInTheDocument();
+
+  const linkElement1 = screen.getByText(/second tuit/i);
+  expect(linkElement1).toBeInTheDocument();
+});
 
 test('tuit list renders mocked', async () => {
   const mock = jest.spyOn(axios, 'get');
-  mock.mockImplementation(() =>
-      Promise.resolve({data: {tuits: MOCKED_TUITS}}));
+  mock.mockImplementation(() => Promise.resolve({data: {tuits: MOCKED_TUITS}}));
   const response = await findAllTuits();
   const tuits = response.tuits;
 
@@ -49,13 +58,14 @@ test('tuit list renders mocked', async () => {
       <HashRouter>
         <Tuits tuits={tuits}/>
       </HashRouter>
-  )
-  const linkElement1 = screen.getByText(/test0/i);
+  );
+
+  const linkElement0 = screen.getByText(/tuit0/i);
+  expect(linkElement0).toBeInTheDocument();
+
+  const linkElement1 = screen.getByText(/tuit1/i);
   expect(linkElement1).toBeInTheDocument();
 
-  const linkElement2 = screen.getByText(/test1/i);
+  const linkElement2 = screen.getByText(/tuit2/i);
   expect(linkElement2).toBeInTheDocument();
-
-  const linkElement3 = screen.getByText(/test2/i);
-  expect(linkElement3).toBeInTheDocument();
 });
