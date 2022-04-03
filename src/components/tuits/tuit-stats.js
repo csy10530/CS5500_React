@@ -15,9 +15,9 @@ const TuitStats = ({tuit, likeTuit = () => {}, dislikeTuit = () => {}}) => {
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
 
-    const initStat = async () => {
+    /*const initStat = async () => {
 
-    }
+    }*/
 
     //useEffect(initStat, [tuit.stats]);
     useEffect(() => {
